@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "nodemon -w ./src --exec 'clear && cd example && webpack-dev-server --debug'",
-    "build": "cd example && webpack --config webpack.config.js",
+    "build": "rimraf lib && gulp",
     "test": "mocha"
   },
   "repository": {
