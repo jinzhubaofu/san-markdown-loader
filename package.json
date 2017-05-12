@@ -1,6 +1,6 @@
 {
   "name": "san-markdown-loader",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.1",
   "description": "load markdown file as a san component",
   "main": "lib/index.js",
   "directories": {
