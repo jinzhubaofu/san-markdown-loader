@@ -23,4 +23,4 @@ gulp.task(
     () => gulp.src('src/**/*.css').pipe(gulp.dest('lib'))
 );
 
-gulp.task('default', ['babel']);
+gulp.task('default', ['babel', 'css']);
