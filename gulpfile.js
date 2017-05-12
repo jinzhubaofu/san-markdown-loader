@@ -18,4 +18,9 @@ gulp.task(
         .pipe(gulp.dest('lib'))
 );
 
+gulp.task(
+    'css',
+    () => gulp.src('src/**/*.css').pipe(gulp.dest('lib'))
+);
+
 gulp.task('default', ['babel']);
