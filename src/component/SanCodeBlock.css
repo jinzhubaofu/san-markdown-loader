@@ -1,0 +1,36 @@
+.san-markdown-loader-code-block {
+    margin: 1rem 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+}
+
+.san-markdown-loader-code-block-title {
+    background-color: #e8e8e8;
+    display: flex;
+    height: 3rem;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 1rem;
+    margin: 0;
+    cursor: pointer;
+}
+
+.san-markdown-loader-code-block-title > label {
+    flex: 1;
+    cursor: pointer;
+}
+
+.san-markdown-loader-code-block-source {
+    overflow: hidden;
+    transition: max-height 5s;
+    box-sizing: border-box;
+    background-color: #f7f7f7;
+}
+
+.san-markdown-loader-code-block-source > pre {
+    padding: 1rem;
+    margin: 0;
+}
+
+.san-markdown-loader-code-block-box {
+    padding: 1rem;
+}
