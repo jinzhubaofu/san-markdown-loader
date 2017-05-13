@@ -46,18 +46,34 @@ function replaceRootNode(root, newRoot) {
 
 }
 
+/**
+ * 合并 style 标签
+ *
+ * 这里要注意给 style 的 childNodes 中的所有 #text 结点设置 parentNode；
+ * serialize 会根据 parentNode 来判断要不要做 html escape；
+ *
+ * @param  {Array<Node>} styles 标签 AST 结点
+ * @return {Node}
+ */
 function combineStyles(styles) {
-    return {
+
+    let combinedStyle = {
         nodeName: 'style',
         tagName: 'style',
         attrs: [],
-        childNodes: [
-            {
-                nodeName: '#text',
-                value: styles.map(style => style.childNodes[0].value).join('\n')
-            }
-        ]
+        childNodes: []
     };
+
+    let child = {
+        nodeName: '#text',
+        value: styles.map(style => style.childNodes[0].value).join('\n'),
+        parentNode: combinedStyle
+    };
+
+    combinedStyle.childNodes.push(child);
+
+    return combinedStyle;
+
 }
 
 function replaceSanCodeBlock(ast, components) {

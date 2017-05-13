@@ -6,7 +6,7 @@
 /* eslint-disable fecs-no-require */
 
 const webpack = require('webpack');
-const config = require('../example/webpack.config');
+const config = require('./webpack.config');
 
 webpack(config, (err, stats) => {
 

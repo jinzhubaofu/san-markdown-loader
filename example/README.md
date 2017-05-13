@@ -8,10 +8,10 @@
     ```san test
     <template>
         <div>
-            <button class="test" on-click="minus">-</button>
+            <button class="test" on-click="minus" disabled="disabled">-</button>
             {{count}}
             <button class="test" on-click="add">+</button>
-            <div>
+            <div class="test-test">
                 another button <san-button>aaa</san-button>
             </div>
         </div>
@@ -73,3 +73,9 @@ var a = 1;
 ```sh
 npm install
 ```
+
+<style>
+.test-test > * {
+    color: rgb(0, 159, 147)
+}
+</style>
