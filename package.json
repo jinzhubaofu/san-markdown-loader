@@ -1,6 +1,6 @@
 {
   "name": "san-markdown-loader",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "load markdown file as a san component",
   "main": "lib/index.js",
   "directories": {
@@ -9,7 +9,8 @@
   "scripts": {
     "start": "nodemon -w ./src --exec 'clear && cd example && webpack-dev-server --debug'",
     "build": "rimraf lib && gulp",
-    "test": "mocha"
+    "test": "mocha",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
