@@ -20,6 +20,7 @@ export default class SanCodeBlock extends san.Component {
                 class="san-markdown-loader-code-block-title"
                 on-click="toggleSource">
                 <label>{{title}}</label>
+                <svg viewBox="0 0 24 24" style="display: inline-block; color: rgba(0, 0, 0, 0.87); fill: currentcolor; height: 24px; width: 24px; user-select: none; transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"></path></svg>
             </h4>
             <p
                 san-if="!!description"
