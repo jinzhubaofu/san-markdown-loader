@@ -27,17 +27,19 @@
   },
   "homepage": "https://github.com/jinzhubaofu/san-markdown-loader#readme",
   "dependencies": {
+    "babel-core": "^6.24.1",
+    "babel-traverse": "^6.24.1",
+    "babel-types": "^6.24.1",
+    "domutils": "^1.6.2",
     "highlight.js": "^9.10.0",
+    "htmlparser2": "^3.9.2",
     "loader-utils": "^1.1.0",
     "lodash": "^4.17.4",
     "markdown-it": "^8.3.1",
-    "markdown-it-container": "^2.0.0",
-    "markdown-it-fence": "^0.0.2",
     "mkdirp": "^0.5.1",
     "require-path-relative": "^1.0.1",
     "rimraf": "^2.6.1",
-    "shorthash": "^0.0.2",
-    "babel-core": "^6.24.1"
+    "shorthash": "^0.0.2"
   },
   "peerDependences": {
     "san-loader": "^0.0.4"
@@ -48,6 +50,9 @@
     "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^0.25.0",
     "expect.js": "^0.3.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-sourcemaps": "^2.6.0",
     "html-loader": "^0.4.5",
     "mocha": "^3.3.0",
     "nodemon": "^1.11.0",

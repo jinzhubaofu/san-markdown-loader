@@ -13,6 +13,8 @@ const parser = require('./parser');
 
 module.exports = function (source) {
 
+    let callback = this.async();
+
     let options = Object.assign(
         loaderUtils.getOptions(this) || {},
         this.sanMarkdown,
@@ -20,18 +22,24 @@ module.exports = function (source) {
     );
 
     let code = markdown(options).render(source);
-    let parts = parser.parse(code);
 
-    let {filePath} = generator.generate({
-        source,
-        code,
-        parts,
-        filePath: this.resourcePath,
-        cacheDir: path.join(__dirname, '../.cache')
-    });
+    parser.parse(code).then(
+        ast => {
 
-    let moduleName = loaderUtils.stringifyRequest(this, filePath).slice(1, -1);
+            let {filePath} = generator.generate({
+                source,
+                code,
+                ast,
+                filePath: this.resourcePath,
+                cacheDir: path.join(__dirname, '../.cache')
+            });
 
-    return `module.exports = require('!!san-loader!${moduleName}');`;
+            let moduleName = loaderUtils.stringifyRequest(this, filePath).slice(1, -1);
+
+            callback(null, `module.exports = require('!!san-loader!${moduleName}');`);
+
+        },
+        callback
+    );
 
 };

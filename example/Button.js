@@ -8,7 +8,7 @@ import san from 'san';
 export default san.defineComponent({
 
     template: `
-        <button on-click="add">click me {{count}}</button>
+        <button on-click="add">{{primaryText}} click me {{count}}</button>
     `,
 
     initData() {

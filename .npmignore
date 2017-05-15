@@ -3,3 +3,7 @@ node_modules
 test
 tool
 src
+.babelrc
+.fecsrc
+.gitignore
+gulpfile.js

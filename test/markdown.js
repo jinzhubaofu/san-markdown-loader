@@ -17,7 +17,6 @@ let md = markdownIt()
             return params.trim().split(' ')[0] === 'san';
         },
         render(tokens, index, options, env, self) {
-            // return 'heihei';
             let {info, content} = tokens[index];
             let [, title = ''] = info.split(' ');
             return `<san-code-block title="${title}"> ${content} </san-code-block>`;

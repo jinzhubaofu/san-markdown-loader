@@ -8,11 +8,11 @@
     ```san test
     <template>
         <div>
-            <button class="test" on-click="minus" disabled="disabled">-</button>
+            <button myAttrs="111" class="test" on-click="minus" disabled="disabled">-</button>
             {{count}}
             <button class="test" on-click="add">+</button>
             <div class="test-test">
-                another button <san-button>aaa</san-button>
+                another button <san-button primaryText="12321">aaa</san-button>
             </div>
         </div>
     </template>
@@ -49,6 +49,7 @@
 ```san another silly demo
 <template>
     <section>
+        <button disabled>disabled</button>
         hello <input value={=name=} />, <button on-click="ok">ok</button>
     <section>
 </template>
