@@ -138,6 +138,7 @@ ${importContent}
 import SanCodeBlock from '${relativeSanCodeBlockPath}';
 export default {
     components: {
+        'san-code-block': SanCodeBlock,
         ${componentContent}
     }
 };`;
