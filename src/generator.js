@@ -11,9 +11,9 @@ const hash = require('shorthash');
 const transform = require('./transform');
 const {CODE_BLOCK_NAME} = require('./constants');
 const _ = require('lodash');
+const relative = require('require-path-relative');
 const {
     findAll,
-    replaceElement,
     getInnerHTML,
     getOuterHTML,
     appendChild
@@ -62,12 +62,13 @@ function generateCodeBlock(options) {
 
     let componentName = _.camelCase(snippetFileName).toLowerCase();
 
-    // 用 snippet 替换掉 code block
-    replaceElement(node, {
-        type: 'tag',
+    // 用 snippet 替换掉 code block 的原有内容
+    node.children = [];
+    appendChild(node, {
         name: componentName,
-        children: [],
-        attribs: {}
+        type: 'tag',
+        attribs: {},
+        children: []
     });
 
     return {
@@ -94,7 +95,12 @@ function resolveComponents(root) {
 
 }
 
-function generateScriptByComponents(components) {
+function generateScriptByComponents(options) {
+
+    let {
+        components,
+        targetPath
+    } = options;
 
     if (!components || !components.length) {
         return '';
@@ -122,8 +128,14 @@ function generateScriptByComponents(components) {
 
     }).join(',\n');
 
+    let relativeSanCodeBlockPath = relative(
+        path.dirname(targetPath),
+        path.join(__dirname, './component/SanCodeBlock.js')
+    );
+
     return `\
 ${importContent}
+import SanCodeBlock from '${relativeSanCodeBlockPath}';
 export default {
     components: {
         ${componentContent}
@@ -180,7 +192,11 @@ function generate(options) {
                 index
             })
         ));
-        script = generateScriptByComponents(components);
+        script = generateScriptByComponents({
+            components,
+            targetPath: targetFilePath,
+            originPath: filePath
+        });
     }
 
     let content = `\
