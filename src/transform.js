@@ -5,11 +5,10 @@
 
 /* eslint-disable fecs-no-require */
 
-const path = require('path');
 const babylon = require('babylon');
 const traverse = require('babel-traverse').default;
 const gen = require('babel-generator').default;
-const relative = require('require-path-relative');
+const util = require('./util');
 
 function normalizeDependences(options) {
 
@@ -24,16 +23,12 @@ function normalizeDependences(options) {
             enter({node}) {
                 // 将 cache 文件中的依赖路径调整正确
                 let source = node.source;
-                if (/^\./.test(source.value)) {
-                    let absolutePath = path.join(
-                        path.dirname(originPath),
-                        source.value
+                if (util.isRelativeModulePath(source.value)) {
+                    source.value = util.translateModulePath(
+                        source.value,
+                        originPath,
+                        targetPath
                     );
-                    let newRelativePath = relative(
-                        path.dirname(targetPath),
-                        absolutePath
-                    );
-                    source.value = newRelativePath;
                 }
             }
         }

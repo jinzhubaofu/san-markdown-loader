@@ -56,10 +56,11 @@
 </template>
 <script>
 import Divider from './Divider';
+import text from 'html-loader!./text.txt';
 export default {
     initData() {
         return {
-            name: 'san'
+            name: text
         };
     },
     components: {
