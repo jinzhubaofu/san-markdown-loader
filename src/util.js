@@ -22,7 +22,6 @@ function translateModulePath(currentModulePath, originPath, targetPath) {
 function isRelativeModulePath(modulePath) {
     let exclamationIndex = modulePath.lastIndexOf('!');
     let result = modulePath.charAt(exclamationIndex + 1) === '.';
-    console.log(`${modulePath} => ${result}`);
     return result;
 }
 

@@ -35,9 +35,12 @@ module.exports = function (md) {
 
             let {info, content} = tokens[index];
             let {title} = resolveFenceData(info);
+            let escapedContent = _.escape(content)
+                .replace(/{{/g, '&#x7B;&#x7B;')
+                .replace(/}}/g, '&#x7D;&#x7D;');
 
             return `
-<san-code-block title="${title}" content="${_.escape(content)}">
+<san-code-block title="${title}" content="${escapedContent}">
     ${content}
 </san-code-block>
 `;

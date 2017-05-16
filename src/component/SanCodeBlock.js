@@ -47,7 +47,9 @@ export default class SanCodeBlock extends san.Component {
         },
         /* eslint-disable fecs-camelcase */
         _content() {
-            return _.unescape(this.data.get('content'));
+            return _.unescape(this.data.get('content'))
+                .replace(/&#x7B;/g, '{')
+                .replace(/&#x7D;/g, '}');
         }
         /* eslint-enable fecs-camelcase */
     };

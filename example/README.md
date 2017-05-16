@@ -49,7 +49,7 @@
 ```san another silly demo
 <template>
     <section>
-        <button disabled>disabled</button>
+        <button disabled>{{name}}</button>
         <san-divider />
         hello <input value={=name=} />, <button on-click="ok">ok</button>
     <section>
