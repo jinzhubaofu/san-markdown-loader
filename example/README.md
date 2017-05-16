@@ -50,7 +50,7 @@
 <template>
     <section>
         <button disabled>{{name}}</button>
-        <san-divider />
+        <san-divider kaixin disabled />
         hello <input value={=name=} />, <button on-click="ok">ok</button>
     <section>
 </template>

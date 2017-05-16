@@ -9,6 +9,9 @@ export default san.defineComponent({
 
     template: `
         <hr />
-    `
+    `,
+    inited() {
+        console.log(this.data.get());
+    }
 
 });

@@ -12,12 +12,8 @@ const transform = require('./transform');
 const {CODE_BLOCK_NAME} = require('./constants');
 const _ = require('lodash');
 const relative = require('require-path-relative');
-const {
-    findAll,
-    getInnerHTML,
-    getOuterHTML,
-    appendChild
-} = require('domutils');
+const {findAll, appendChild} = require('domutils');
+const {getInnerHTML, getOuterHTML} = require('./util');
 
 function generateCodeBlock(options) {
 

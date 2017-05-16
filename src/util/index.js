@@ -7,6 +7,7 @@
 
 const relative = require('require-path-relative');
 const path = require('path');
+const {getInnerHTML, getOuterHTML, getText} = require('./stringify');
 
 function translateModulePath(currentModulePath, originPath, targetPath) {
 
@@ -14,8 +15,9 @@ function translateModulePath(currentModulePath, originPath, targetPath) {
     let loaderString = currentModulePath.slice(0, exclamationIndex + 1);
     let modulePath = currentModulePath.slice(exclamationIndex + 1);
     let absolutePath = path.resolve(path.dirname(originPath), modulePath);
+    let newModulePath = relative(path.dirname(targetPath), absolutePath);
 
-    return `${loaderString}${relative(path.dirname(targetPath), absolutePath)}`;
+    return `${loaderString}${newModulePath}`;
 
 }
 
@@ -27,5 +29,8 @@ function isRelativeModulePath(modulePath) {
 
 module.exports = {
     translateModulePath,
-    isRelativeModulePath
+    isRelativeModulePath,
+    getInnerHTML,
+    getOuterHTML,
+    getText
 };
