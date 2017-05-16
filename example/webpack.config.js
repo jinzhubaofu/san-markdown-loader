@@ -40,10 +40,43 @@ module.exports = {
                 test: /\.md$/,
                 use: [
                     {
-                        loader: 'babel-loader'
-                    },
-                    {
-                        loader: path.resolve(__dirname, '../src/index.js')
+                        loader: path.resolve(__dirname, '../src/index.js'),
+                        options: {
+                            use: [function (md) {
+                                let renderer = md.renderer;
+                                let renderAttrs = renderer.renderAttrs;
+
+                                md.renderer.renderAttrs = function (token) {
+
+                                    if (token.nesting === -1) {
+                                        return '';
+                                    }
+
+                                    let attrs = token.attrs;
+
+                                    if (!attrs) {
+                                        attrs = token.attrs = [];
+                                    }
+
+                                    let hasClassName = false;
+                                    for (let i = 0, len = attrs.length; i < len; i++) {
+                                        if (attrs[i][0] === 'class') {
+                                            attrs[i][1] += ' ' + 'heihei';
+                                            hasClassName = true;
+                                            break;
+                                        }
+                                    }
+
+
+                                    if (!hasClassName) {
+                                        attrs.push(['class', 'heihei']);
+                                    }
+
+                                    return renderAttrs.call(renderer, token);
+
+                                };
+                            }]
+                        }
                     }
                 ]
             },

@@ -26,7 +26,10 @@ function parse(code) {
         let parser = new Parser(
             parseHandler,
             {
-                lowerCaseAttributeNames: false
+                // 保留属性名的大小写
+                lowerCaseAttributeNames: false,
+                // 打开自定义标签的自闭合
+                recognizeSelfClosing: true
             }
         );
 

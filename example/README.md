@@ -50,15 +50,20 @@
 <template>
     <section>
         <button disabled>disabled</button>
+        <san-divider />
         hello <input value={=name=} />, <button on-click="ok">ok</button>
     <section>
 </template>
 <script>
+import Divider from './Divider';
 export default {
     initData() {
         return {
             name: 'san'
         };
+    },
+    components: {
+        'san-divider': Divider
     },
     ok() {
         alert(this.data.get('name'));
